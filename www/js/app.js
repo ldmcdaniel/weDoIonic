@@ -7,7 +7,11 @@
 angular.module('starter', [
   'ionic',
   'starter.controllers',
-  'weDo.menu'])
+  'weDo.menu',
+  'weDo.login',
+  'weDo.groups',
+  'weDo.profile',
+  'weDo.tasks'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -35,42 +39,44 @@ angular.module('starter', [
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
+  .state('app.login', {
+    url: '/login',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'templates/login/login.html',
+        controller: 'LoginCtrl'
       }
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
+  .state('app.groups', {
+      url: '/groups',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/groups/groups.html',
+          controller: 'GroupsCtrl'
         }
       }
     })
-    .state('app.playlists', {
-      url: '/playlists',
+    .state('app.profile', {
+      url: '/profile',
       views: {
         'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+          templateUrl: 'templates/profile/profile.html',
+          controller: 'ProfileCtrl'
         }
       }
     })
 
-  .state('app.single', {
-    url: '/playlists/:playlistId',
+  .state('app.tasks', {
+    url: '/tasks',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/tasks/tasks.html',
+        controller: 'TasksCtrl'
       }
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('app/login');
 });
