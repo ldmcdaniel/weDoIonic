@@ -1,4 +1,4 @@
-angular.module('weDo.groups', [])
-  .controller('GroupsCtrl', function () {
+angular.module('weDo.myGroups', [])
+  .controller('MyGroupsCtrl', function () {
 
   })

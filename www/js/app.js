@@ -9,9 +9,12 @@ angular.module('starter', [
   'starter.controllers',
   'weDo.menu',
   'weDo.login',
-  'weDo.groups',
+  'weDo.myGroups',
   'weDo.profile',
-  'weDo.tasks'])
+  'weDo.tasks',
+  'weDo.landing',
+  'weDo.register',
+  'weDo.search'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -49,20 +52,20 @@ angular.module('starter', [
     }
   })
 
-  .state('app.groups', {
-      url: '/groups',
+  .state('app.myGroups', {
+      url: '/myGroups',
       views: {
         'menuContent': {
-          templateUrl: 'templates/groups/groups.html',
-          controller: 'GroupsCtrl'
+          templateUrl: 'templates/groups/myGroups.html',
+          controller: 'MyGroupsCtrl'
         }
       }
     })
-    .state('app.profile', {
-      url: '/profile',
+    .state('app.myProfile', {
+      url: '/myProfile',
       views: {
         'menuContent': {
-          templateUrl: 'templates/profile/profile.html',
+          templateUrl: 'templates/profile/myProfile.html',
           controller: 'ProfileCtrl'
         }
       }
@@ -76,7 +79,52 @@ angular.module('starter', [
         controller: 'TasksCtrl'
       }
     }
+  })
+  .state('app.landing', {
+    url: '/landing',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/landing/landing.html',
+        controller: 'LandingCtrl'
+      }
+    }
+  })
+  .state('app.register', {
+    url: '/register',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/register/register.html',
+        controller: 'RegisterCtrl'
+      }
+    }
+  })
+  .state('app.search', {
+    url: '/search',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/search/search.html',
+        controller: 'SearchCtrl'
+      }
+    }
+  })
+  .state('app.userSearch', {
+    url: '/userSearch',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/search/userSearch.html',
+        controller: 'SearchCtrl'
+      }
+    }
+  })
+  .state('app.groupSearch', {
+    url: '/groupSearch',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/search/groupSearch.html',
+        controller: 'SearchCtrl'
+      }
+    }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('app/login');
+  $urlRouterProvider.otherwise('app/landing');
 });
