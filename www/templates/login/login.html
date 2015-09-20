@@ -1,5 +1,10 @@
 <ion-view view-title="Login">
   <ion-content>
+    <div ng-repeat="user in users">
+      <label>
+        {{ user.first }} {{user.last}}
+      </label>
+    </div>
     <div class="list list-inset">
       <label class="item item-input">
         <input type="text" placeholder="Email">
@@ -11,6 +16,5 @@
         Submit
       </button>
     </div>
-
   </ion-content>
 </ion-view>

@@ -9,12 +9,9 @@ angular.module('starter', [
   'starter.controllers',
   'weDo.menu',
   'weDo.login',
-  'weDo.myGroups',
-  'weDo.profile',
-  'weDo.tasks',
-  'weDo.landing',
-  'weDo.register',
-  'weDo.search'])
+  'weDo.group',
+  'weDo.register'
+  ])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -34,97 +31,39 @@ angular.module('starter', [
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-
     .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu/menu.html',
-    controller: 'AppCtrl'
-  })
-
-  .state('app.login', {
-    url: '/login',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/login/login.html',
-        controller: 'LoginCtrl'
-      }
-    }
-  })
-
-  .state('app.myGroups', {
-      url: '/myGroups',
+      url: '/app',
+      abstract: true,
+      templateUrl: 'templates/menu/menu.html',
+      controller: 'AppCtrl'
+    })
+    .state('app.register', {
+      url: '/register',
       views: {
         'menuContent': {
-          templateUrl: 'templates/groups/myGroups.html',
-          controller: 'MyGroupsCtrl'
+          templateUrl: 'templates/register/register.html',
+          controller: 'RegisterCtrl'
         }
       }
     })
-    .state('app.myProfile', {
-      url: '/myProfile',
+    .state('app.login', {
+      url: '/login',
       views: {
         'menuContent': {
-          templateUrl: 'templates/profile/myProfile.html',
-          controller: 'ProfileCtrl'
+          templateUrl: 'templates/login/login.html',
+          controller: 'LoginCtrl'
         }
       }
     })
-
-  .state('app.tasks', {
-    url: '/tasks',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/tasks/tasks.html',
-        controller: 'TasksCtrl'
+    .state('app.group', {
+      url: '/group',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/group/group.html',
+          controller: 'GroupCtrl'
+        }
       }
-    }
-  })
-  .state('app.landing', {
-    url: '/landing',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/landing/landing.html',
-        controller: 'LandingCtrl'
-      }
-    }
-  })
-  .state('app.register', {
-    url: '/register',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/register/register.html',
-        controller: 'RegisterCtrl'
-      }
-    }
-  })
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search/search.html',
-        controller: 'SearchCtrl'
-      }
-    }
-  })
-  .state('app.userSearch', {
-    url: '/userSearch',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search/userSearch.html',
-        controller: 'SearchCtrl'
-      }
-    }
-  })
-  .state('app.groupSearch', {
-    url: '/groupSearch',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search/groupSearch.html',
-        controller: 'SearchCtrl'
-      }
-    }
-  });
+    });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('app/landing');
+  $urlRouterProvider.otherwise('app/login');
 });
