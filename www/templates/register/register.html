@@ -2,18 +2,18 @@
   <ion-content>
     <div class="list list-inset">
       <label class="item item-input">
-        <input type="text" placeholder="First Name">
+        <input type="text" placeholder="First Name" ng-model="userData.first">
       </label>
       <label class="item item-input">
-        <input type="text" placeholder="Last Name">
+        <input type="text" placeholder="Last Name" ng-model="userData.last">
       </label>
       <label class="item item-input">
-        <input type="text" placeholder="Email">
+        <input type="text" placeholder="Email" ng-model="userData.email">
       </label>
       <label class="item item-input">
-        <input type="text" placeholder="Password">
+        <input type="text" placeholder="Password" ng-model="userData.password">
       </label>
-      <button class="button button-block button-positive">
+      <button class="button button-block button-positive" ng-click="createUser()">
         Register
       </button>
     </div>

@@ -1,16 +1,15 @@
 <ion-view view-title="My Groups">
   <ion-content>
-    <div class="list" ng-repeat="group in groups | orderBy: 'title'">
-      <div class="item item-divider">
-        <a href="#">{{group.title}}</a>
+    <div class="list list-inset" ng-repeat="group in groups | orderBy: 'name'">
+      <div class="item">
+        <a href="#">{{group.name}}</a>
       </div>
-        {{group.des}}
     </div>
-    <div class="list list-inset" ng-submit="addGroup()">
+    <div class="list list-inset">
       <label class="item item-input">
-        <input type="text" ng-model="title" placeholder="Group Name">
+        <input type="text" placeholder="Group Name" ng-model="groupData.name">
       </label>
-      <button class="button button-block button-positive" type="submit">Create Group</button>
+      <button class="button button-block button-positive" ng-click="createGroup()">Create Group</button>
     </div>
   </ion-content>
 </ion-view>
