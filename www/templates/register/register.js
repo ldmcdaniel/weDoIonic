@@ -1,5 +1,5 @@
 angular.module('weDo.register', [])
-  .controller('RegisterCtrl', function ($scope, $http) {
+  .controller('RegisterCtrl', function ($scope, $http, $ionicPopup) {
     $scope.userData = {};
 
     // when landing on the page, get all todos and show them
@@ -14,6 +14,9 @@ angular.module('weDo.register', [])
 
     // when submitting the add form, send the text to the node API
     $scope.createUser = function() {
+      if ($scope.userData.password !== $scope.userData.password_confirm) {
+        $ionicPopup.alert({title: 'Passswords must match!'});
+      } else {
       $http.post('/api/users', $scope.userData)
         .success(function(data) {
           $scope.userData = {}; // clear the form so our user is ready to enter another
@@ -22,6 +25,7 @@ angular.module('weDo.register', [])
         .error(function(data) {
           console.log('Error: ' + data);
         });
+      }
     };
 
     // delete a todo after checking it
