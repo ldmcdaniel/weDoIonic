@@ -10,7 +10,9 @@ angular.module('starter', [
   'weDo.menu',
   'weDo.login',
   'weDo.group',
-  'weDo.register'
+  'weDo.register',
+  'weDo.landing',
+  'weDo.getGroup'
   ])
 
 .run(function($ionicPlatform) {
@@ -55,15 +57,42 @@ angular.module('starter', [
         }
       }
     })
-    .state('app.group', {
-      url: '/group',
+    .state('app.myGroups', {
+      url: '/myGroups',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/group/myGroups.html',
+          controller: 'GroupCtrl'
+        }
+      }
+    })
+    // .state('app.group', {
+    //   url: '/myGroups/:group_id',
+    //   views: {
+    //     'menuContent': {
+    //       templateUrl: 'templates/group/group.html',
+    //       controller: 'GroupCtrl'
+    //     }
+    //   }
+    // })
+    .state('app.getGroup', {
+      url: '/myGroups/:group_id',
       views: {
         'menuContent': {
           templateUrl: 'templates/group/group.html',
-          controller: 'GroupCtrl'
+          controller: 'GetGroupCtrl'
+        }
+      }
+    })
+    .state('app.landing', {
+      url: '/',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/landing/landing.html',
+          controller: 'LandingCtrl'
         }
       }
     });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('app/login');
+  $urlRouterProvider.otherwise('app/');
 });

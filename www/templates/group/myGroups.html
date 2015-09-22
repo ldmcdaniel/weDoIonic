@@ -1,0 +1,16 @@
+<ion-view view-title="My Groups">
+  <ion-content>
+    <div class="list list-inset" ng-repeat="group in groups | orderBy: 'name'">
+      <div class="item">
+        <a ng-click="getGroup()" href="#/app/myGroups/{{group._id}}">{{group.name}}</a>
+      </div>
+    </div>
+    <div class="list list-inset">
+      <label class="item item-input">
+        <input type="text" placeholder="Group Name" ng-model="groupData.name">
+      </label>
+      <button class="button button-block button-positive" ng-click="createGroup()">Create Group</button>
+    </div>
+  </ion-content>
+</ion-view>
+

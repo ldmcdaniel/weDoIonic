@@ -5,7 +5,7 @@ angular.module('weDo.login', [])
       $http.post('/api/login', $scope.loginData)
         .success(function(data) {
           $scope.login = data;
-          console.log(data);
+          // console.log(data);
         })
         .error(function(data) {
           console.log('Error: ' + data);
