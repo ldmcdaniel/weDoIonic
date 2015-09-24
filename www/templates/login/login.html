@@ -2,12 +2,12 @@
   <ion-content>
     <div class="list list-inset">
       <label class="item item-input">
-        <input type="text" placeholder="Email" ng-model="$parent.loginData.email">
+        <input type="text" placeholder="Username" ng-model="$parent.loginData.username" required autofocus>
       </label>
       <label class="item item-input">
-        <input type="text" placeholder="Password" ng-model="$parent.loginData.password">
+        <input type="password" placeholder="Password" ng-model="$parent.loginData.password" required>
       </label>
-      <button class="button button-block button-positive" ng-click="loginUser()">
+      <button class="button button-block button-positive" type="submit" ng-click="login()">
         Submit
       </button>
     </div>

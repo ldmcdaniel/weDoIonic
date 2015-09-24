@@ -7,10 +7,21 @@
     </div>
     <div class="list list-inset">
       <label class="item item-input">
-        <input type="text" placeholder="Group Name" ng-model="groupData.name">
+        <input type="text" placeholder="Group Name" ng-model="$parent.groupData.name" required>
       </label>
       <button class="button button-block button-positive" ng-click="createGroup()">Create Group</button>
     </div>
   </ion-content>
+   <div class="tabs">
+      <a class="tab-item" ui-sref="app.logout">
+        Logout
+      </a>
+<!--       <a class="tab-item" ui-sref="app.register">
+        Register
+      </a>
+ --><!--       <a class="tab-item">
+        Settings
+      </a> -->
+    </div>
 </ion-view>
 

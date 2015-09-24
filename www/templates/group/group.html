@@ -1,5 +1,11 @@
-<ion-view view-title="Group">
+<ion-view view-title="{{group.name}}">
   <ion-content>
     <h1>{{group.name}}</h1>
+    <div class="list list-inset">
+      <label class="item item-input">
+        <input type="text" placeholder="User email" ng-model="$parent.groupData.name" required>
+      </label>
+      <button class="button button-block button-positive" ng-click="createGroup()">Add New User</button>
+    </div>
   </ion-content>
 </ion-view>

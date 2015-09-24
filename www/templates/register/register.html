@@ -2,21 +2,27 @@
   <ion-content>
     <div class="list list-inset">
       <label class="item item-input">
-        <input type="text" placeholder="First Name" ng-model="userData.first">
+        <input type="text" placeholder="First Name" ng-model="userData.name.first" required autofocus>
       </label>
       <label class="item item-input">
-        <input type="text" placeholder="Last Name" ng-model="userData.last">
+        <input type="text" placeholder="Last Name" ng-model="userData.name.last" required>
       </label>
       <label class="item item-input">
-        <input type="text" placeholder="Email" ng-model="userData.email">
+        <input type="text" placeholder="Create group name" ng-model="userData.group" required>
       </label>
       <label class="item item-input">
-        <input type="text" placeholder="Password" ng-model="userData.password">
+        <input type="text" placeholder="Username" ng-model="$parent.userData.username" required>
       </label>
       <label class="item item-input">
-        <input type="text" placeholder="Password" ng-model="userData.password_confirm">
+        <input type="email" placeholder="Email" ng-model="userData.email" required>
       </label>
-      <button class="button button-block button-positive" ng-click="registerUser()">
+      <label class="item item-input">
+        <input type="password" placeholder="Password" ng-model="$parent.userData.password" required>
+      </label>
+      <label class="item item-input">
+        <input type="password" placeholder="Re-enter Password" ng-model="userData.password_confirm" required>
+      </label>
+      <button class="button button-block button-positive" ng-click="register()">
         Register
       </button>
     </div>

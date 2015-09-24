@@ -9,10 +9,12 @@ angular.module('starter', [
   'starter.controllers',
   'weDo.menu',
   'weDo.login',
+  'weDo.logout',
   'weDo.group',
   'weDo.register',
   'weDo.landing',
-  'weDo.getGroup'
+  'weDo.getGroup',
+  'weDo.services'
   ])
 
 .run(function($ionicPlatform) {
@@ -37,14 +39,16 @@ angular.module('starter', [
       url: '/app',
       abstract: true,
       templateUrl: 'templates/menu/menu.html',
-      controller: 'AppCtrl'
+      controller: 'AppCtrl',
+      access: {restricted: false}
     })
     .state('app.register', {
       url: '/register',
       views: {
         'menuContent': {
           templateUrl: 'templates/register/register.html',
-          controller: 'RegisterCtrl'
+          controller: 'RegisterCtrl',
+          access: {restricted: false}
         }
       }
     })
@@ -53,7 +57,18 @@ angular.module('starter', [
       views: {
         'menuContent': {
           templateUrl: 'templates/login/login.html',
-          controller: 'LoginCtrl'
+          controller: 'LoginCtrl',
+          access: {restricted: false}
+        }
+      }
+    })
+    .state('app.logout', {
+      url: '/logout',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/logout/logout.html',
+          controller: 'LogoutCtrl',
+          access: {restricted: false}
         }
       }
     })
@@ -62,25 +77,18 @@ angular.module('starter', [
       views: {
         'menuContent': {
           templateUrl: 'templates/group/myGroups.html',
-          controller: 'GroupCtrl'
+          controller: 'GroupCtrl',
+          access: {restricted: true}
         }
       }
     })
-    // .state('app.group', {
-    //   url: '/myGroups/:group_id',
-    //   views: {
-    //     'menuContent': {
-    //       templateUrl: 'templates/group/group.html',
-    //       controller: 'GroupCtrl'
-    //     }
-    //   }
-    // })
     .state('app.getGroup', {
       url: '/myGroups/:group_id',
       views: {
         'menuContent': {
           templateUrl: 'templates/group/group.html',
-          controller: 'GetGroupCtrl'
+          controller: 'GetGroupCtrl',
+          access: {restricted: true}
         }
       }
     })
@@ -89,10 +97,18 @@ angular.module('starter', [
       views: {
         'menuContent': {
           templateUrl: 'templates/landing/landing.html',
-          controller: 'LandingCtrl'
+          controller: 'LandingCtrl',
+          access: {restricted: false}
         }
       }
     });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('app/');
+})
+.run(function ($rootScope, $location, $state, AuthService) {
+  $rootScope.$on('$stateChangeStart', function (event, next, current) {
+    if (next.access.restricted && AuthService.isLoggedIn() === false) {
+      $location.path('/login');
+    }
+  });
 });
